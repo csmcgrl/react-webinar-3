@@ -69,18 +69,21 @@ class Store {
    * @param code
    */
   selectItem(code) {
-    this.setState({
-      ...this.state,
-      list: this.state.list.map(item => {
-        if (item.code === code) {
-          item.selected = !item.selected;
-        } else {
+  this.setState({
+    ...this.state,
+    list: this.state.list.map(item => {
+      if (item.code === code) {
+        item.selected = !item.selected;
+        if (item.selected) {
+          item.selectionCount = (item.selectionCount || 0) + 1;
+        }
+      } else {
         item.selected = false;
       }
-        return item;
-      }),
-    });
-  }
+      return item;
+    }),
+  });
+}
 }
 
 export default Store;
