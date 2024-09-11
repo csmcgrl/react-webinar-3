@@ -3,7 +3,10 @@
  */
 class Store {
   constructor(initState = {}) {
-    this.state = initState;
+    this.state = {
+      initState,
+      code: initState.list.length ? Math.max(...initState.list.map((item) => item.code)) : 0,
+    };
     this.listeners = []; // Слушатели изменений состояния
   }
 
@@ -42,9 +45,11 @@ class Store {
    * Добавление новой записи
    */
   addItem() {
+    const newCode = this.state.code + 1;
     this.setState({
       ...this.state,
-      list: [...this.state.list, { code: this.state.list.length + 1, title: 'Новая запись' }],
+      list: [...this.state.list, { code: newCode, title: 'Новая запись' }],
+      code: newCode,
     });
   }
 
