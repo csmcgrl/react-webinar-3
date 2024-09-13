@@ -47,7 +47,7 @@ class Store {
     this.code += 1;
     this.setState({
       ...this.state,
-      list: [...this.state.list, { code, title: 'Новая запись', selected: false, selectedCount: 0 }],
+      list: [...this.state.list, { code, title: 'Новая запись', selected: false, selectedCount: 0 }];
     });
   }
 
@@ -58,7 +58,7 @@ class Store {
   deleteItem(code) {
     this.setState({
       ...this.state,
-      list: this.state.list.filter(item => item.code !== code),
+      list: this.state.list.filter(item => item.code !== code);
     });
   }
 
