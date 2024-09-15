@@ -1,5 +1,5 @@
 import React from 'react';
-import { createElement } from './utils.js';
+import { createElement, getEnding } from './utils.js';
 import './styles.css';
 
 /**
@@ -30,7 +30,7 @@ function App({ store }) {
                 <div className="Item-title">
                   {item.title}{' '}
                   {item.selectedCount > 0 &&
-                    ` | Выделяли ${item.selectedCount} раз`}</div>
+                    ` | Выделяли ${item.selectedCount} ${getEnding(item.selectedCount)}`}</div>
                    <div className="Item-actions">
                   <button onClick={() => store.deleteItem(item.code)}>Удалить</button>
                 </div>
