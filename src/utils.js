@@ -26,3 +26,27 @@ export function createElement(name, props = {}, ...children) {
 
   return element;
 }
+
+export function getEnding(count) {
+  return pluralize(count, ['раз', 'раза', 'раз']);
+}
+
+export function pluralize(count, variants) {
+  const lastDigit = count % 10;
+  const lastTwoDigits = count % 100;
+
+  if (lastTwoDigits >= 11 && lastTwoDigits <= 19) {
+    return variants[2];
+  }
+
+  switch (lastDigit) {
+    case 1:
+      return variants[0];
+    case 2:
+    case 3:
+    case 4:
+      return variants[1];
+    default:
+      return variants[2];
+  }
+}
