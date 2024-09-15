@@ -5,7 +5,9 @@ class Store {
   constructor(initState = {}) {
     this.state = initState;
     this.listeners = []; // Слушатели изменений состояния
-    this.code = 8;
+    this.code =
+      Array.from(this.state.list, item => item.code).reduce((max, code) => Math.max(max, code), 0) +
+      1;
   }
 
   /**
